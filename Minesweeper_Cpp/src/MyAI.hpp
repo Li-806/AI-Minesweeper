@@ -26,6 +26,7 @@
 #include <map>
 #include <set>
 #include <algorithm>
+#include <chrono>
 
 using namespace std;
 
@@ -40,7 +41,12 @@ public:
     // ======================================================================
     // YOUR CODE BEGINS
     // ======================================================================
-
+private:
+    int rows;
+    int cols;
+    int totalMines;
+    int agentX;
+    int agentY;
 
 
     // ======================================================================

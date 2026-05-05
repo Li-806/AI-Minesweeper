@@ -27,16 +27,11 @@ MyAI::MyAI ( int _rowDimension, int _colDimension, int _totalMines, int _agentX,
    // YOUR CODE BEGINS
    // ======================================================================
 
-
-   int num_of_tiles = _rowDimension * _colDimension - _totalMines;
-   if (num_of_tiles < 0) {
-       cout << "Invalid input: number of mines is greater than or equal to the number of tiles." << endl;
-       exit(1);
-   }
-   else if (num_of_tiles == 0) {
-       cout << "GG, you completed this level/world!" << endl;
-       exit(0);
-   }
+    rows = _rowDimension;
+    cols = _colDimension;
+    totalMines = _totalMines;
+    agentX = _agentX;
+    agentY = _agentY;
 
 
    // ======================================================================
@@ -50,6 +45,16 @@ Agent::Action MyAI::getAction( int number )
    // ======================================================================
    // YOUR CODE BEGINS
    // ======================================================================
+
+    int num_of_tiles = rows * cols - totalMines;
+   if (num_of_tiles < 0) {
+       cout << "Invalid input: number of mines is greater than or equal to the number of tiles." << endl;
+       exit(1);
+   }
+   else if (num_of_tiles == 0) {
+       cout << "GG, you completed this level/world!" << endl;
+       exit(0);
+   }
 
 
    auto start_time = std::chrono::steady_clock::now();
