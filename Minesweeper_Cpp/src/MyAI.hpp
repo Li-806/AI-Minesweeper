@@ -1,57 +1,41 @@
-// ======================================================================
-// FILE:        MyAI.hpp
-//
-// AUTHOR:      Jian Li
-//
-// DESCRIPTION: This file contains your agent class, which you will
-//              implement. You are responsible for implementing the
-//              'getAction' function and any helper methods you feel you
-//              need.
-//
-// NOTES:       - If you are having trouble understanding how the shell
-//                works, look at the other parts of the code, as well as
-//                the documentation.
-//
-//              - You are only allowed to make changes to this portion of
-//                the code. Any changes to other portions of the code will
-//                be lost when the tournament runs your code.
-// ======================================================================
-
 #ifndef MINE_SWEEPER_CPP_SHELL_MYAI_HPP
 #define MINE_SWEEPER_CPP_SHELL_MYAI_HPP
 
 #include "Agent.hpp"
-#include <iostream> // temporary use
+#include <iostream>
 #include <vector>
 #include <map>
 #include <set>
 #include <algorithm>
-#include <chrono>
 
 using namespace std;
 
 class MyAI : public Agent
 {
 public:
-    MyAI ( int _rowDimension, int _colDimension, int _totalMines, int _agentX, int _agentY );
+    MyAI(int _rowDimension, int _colDimension, int _totalMines, int _agentX, int _agentY);
 
-    Action getAction ( int number ) override;
+    Action getAction(int number) override;
 
-
-    // ======================================================================
-    // YOUR CODE BEGINS
-    // ======================================================================
 private:
-    int rows;
-    int cols;
+    int rowDimension;
+    int colDimension;
     int totalMines;
-    int agentX;
-    int agentY;
 
+    int lastX;
+    int lastY;
+    bool firstMove;
 
-    // ======================================================================
-    // YOUR CODE ENDS
-    // ======================================================================
+    int uncoveredCount;
+
+    vector<vector<int>> board;
+    vector<pair<int,int>> safeMoves;
+
+    bool inBounds(int x, int y);
+    bool isCovered(int x, int y);
+    void addSafeMove(int x, int y);
+    void addZeroNeighbors(int x, int y);
+    pair<int,int> chooseGuess();
 };
 
-#endif //MINE_SWEEPER_CPP_SHELL_MYAI_HPP
+#endif
