@@ -36,6 +36,7 @@ private:
     void addSafeMove(int x, int y);
     void addZeroNeighbors(int x, int y);
     pair<int,int> chooseGuess();
+    bool CSPCheck();
 };
 
 #endif
